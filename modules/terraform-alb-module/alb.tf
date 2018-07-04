@@ -22,7 +22,7 @@ resource "aws_alb_target_group" "default_tg" {
   port     = "${var.default_target_group_port}"
   protocol = "HTTP"
   vpc_id   = "${var.vpc_id}"
-
+  target_type = "ip"
   deregistration_delay = 30 # 30 seconds draining
 
   lifecycle {
