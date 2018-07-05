@@ -34,12 +34,3 @@ resource "aws_cloudwatch_metric_alarm" "ecs_cluster_oom" {
   count = "${var.enable_alarm_creation == true ? 1:0}"
 }
 
-module "ec2_alarms" {
-  source = "git::ssh://git@gitlab.socrate.vsct.fr/terraformcentral/terraform-ec2-common-alarms-module.git?ref=v1.1.0"
-
-  env                          = "${var.env}"
-  autoscaling_group_name       = "${aws_autoscaling_group.ecs.name}"
-  alarm_notification_topic_arn = "${var.alarm_notification_topic_arn}"
-  enable_alarm_creation        = "${var.enable_alarm_creation}"
-}
-
