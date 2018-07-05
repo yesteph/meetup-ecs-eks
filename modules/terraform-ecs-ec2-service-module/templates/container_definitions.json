@@ -1,19 +1,17 @@
 [
   {
     "name": "${container_name}",
-    "image": "nginxdemos/hello:${docker_tag}",
-    "cpu": ${docker_cpu},
-    "memory": ${docker_memory},
+    "image": "${image_name}",
+    "cpu": ${container_cpu},
+    "memory": ${container_memory},
     "essential": true,
     "portMappings": [
       {
         "containerPort": ${container_port},
-        "protocol": "tcp",
-        "hostPort": 80
+        "protocol": "tcp"
       }
     ],
-    "environment": [
-    ],
+    "environment": ${json_env_var},
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {

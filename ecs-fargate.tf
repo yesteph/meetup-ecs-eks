@@ -70,7 +70,7 @@ module "fargate" {
   project = "fargate"
   ecs_cluster_name = "${aws_ecs_cluster.meetup.name}"
   container_port = "80"
-  aws_alb_target_group_service_arn = "${module.alb.default_target_group_arn}"
+  aws_alb_target_group_service_arn = "${module.alb-fargate.default_target_group_arn}"
 
   it_root_functional_area = "front"
   alarm_notification_topic_arn = ""

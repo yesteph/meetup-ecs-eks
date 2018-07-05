@@ -1,4 +1,4 @@
-module "alb" {
+module "alb-ec2" {
   source = "modules/terraform-alb-module"
 
   aws_region = "${var.aws_region}"
@@ -6,16 +6,9 @@ module "alb" {
   vpc_id = "${data.aws_vpc.vpc.id}"
   internal = "false"
   it_business_unit = "accor"
-  it_root_functional_area = "front"
+  it_root_functional_area = "fargate"
   subnet_ids = "${data.aws_subnet_ids.subnets.ids}"
-  alb_name = "demo"
+  alb_name = "ec2"
   health_check_path = "/"
 }
 
-data "aws_vpc" "vpc" {
-  cidr_block = "${var.vpc_cidr}"
-}
-
-data "aws_subnet_ids" "subnets" {
-  vpc_id = "${data.aws_vpc.vpc.id}"
-}
